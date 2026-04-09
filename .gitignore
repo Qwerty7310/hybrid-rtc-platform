@@ -1,0 +1,6 @@
+.idea/
+docs/
+node_modules/
+dist/
+.codex
+.env
