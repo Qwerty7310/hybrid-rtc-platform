@@ -1,0 +1,23 @@
+services:
+  rtc-backend:
+    image: ghcr.io/${GHCR_NAMESPACE}/hybrid-rtc-platform-server:${IMAGE_TAG}
+    container_name: rtc-backend
+    environment:
+      SERVER_ADDR: ${RTC_SERVER_ADDR:-:8080}
+    expose:
+      - "8080"
+    restart: always
+    networks:
+      - web
+
+  rtc-frontend:
+    image: ghcr.io/${GHCR_NAMESPACE}/hybrid-rtc-platform-client:${IMAGE_TAG}
+    container_name: rtc-frontend
+    restart: always
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
+    name: web
